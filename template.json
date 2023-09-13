@@ -15,7 +15,7 @@
 	"Mappings": {
         "Buckets": {
             "Names": {
-                "WorkPurpose": "workdata"
+                "WorkPurpose": "work-data"
             }
         }
 	},
