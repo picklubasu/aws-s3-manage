@@ -23,7 +23,7 @@
         "S3WorkPurpose": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
-                "BucketName": "samples3"
+                "BucketName": "345814638087-asdnjkn-samples3"
             }
         }
 	},
