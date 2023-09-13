@@ -23,7 +23,26 @@
         "S3WorkPurpose": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
-                "BucketName": "345814638087-asdnjkn-samples3"
+                "BucketName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            {
+                                "Ref": "AccountId"
+                            },
+                            {
+                                "Ref": "Region"
+                            },
+                            {
+                                "Fn::FindInMap": [
+                                    "Buckets",
+                                    "Names",
+                                    "WorkPurpose"
+                                ]
+                            }
+                        ]
+                    ]
+                }
             }
         }
 	},
