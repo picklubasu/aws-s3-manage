@@ -1,0 +1,58 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+    "Transform": "AWS::Serverless-2016-10-31",
+	"Description": "Create and Manage S3 Buckets",
+	"Parameters": {
+		"AccountId": {
+			"Type": "String",
+			"Description": "AWS account ID"
+		},
+        "Region": {
+			"Type": "String",
+			"Description": "AWS account region"
+		}
+	},
+	"Mappings": {
+        "Buckets": {
+            "Names": {
+                "WorkPurpose": "work-data"
+            }
+        }
+	},
+	"Resources": {
+        "S3WorkPurpose": {
+            "Type": "AWS::S3::Bucket",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "BucketName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            {
+                                "Ref": "AccountId"
+                            },
+                            {
+                                "Ref": "Region"
+                            },
+                            {
+                                "Fn::FindInMap": [
+                                    "Buckets",
+                                    "Names",
+                                    "WorkPurpose"
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            }
+        }
+	},
+	"Outputs": {
+        "BucketName": {
+            "Value": {
+                "Ref": "S3WorkPurpose"
+            },
+            "Description": "Display the name of the bucket created for work purpose."
+        }
+	}
+}
