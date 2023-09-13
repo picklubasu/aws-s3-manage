@@ -24,26 +24,7 @@
             "Type": "AWS::S3::Bucket",
             "DeletionPolicy": "Retain",
             "Properties": {
-                "BucketName": {
-                    "Fn::Join": [
-                        "-",
-                        [
-                            {
-                                "Ref": "AccountId"
-                            },
-                            {
-                                "Ref": "Region"
-                            },
-                            {
-                                "Fn::FindInMap": [
-                                    "Buckets",
-                                    "Names",
-                                    "WorkPurpose"
-                                ]
-                            }
-                        ]
-                    ]
-                }
+                "BucketName": "sample"
             }
         }
 	},
